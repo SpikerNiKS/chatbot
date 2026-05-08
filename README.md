@@ -33,11 +33,6 @@ This project is a simple AI chatbot that allows users to interact with various A
    pip install -r requirements.txt
    ```
 
-   Note: The `requirements.txt` includes `chromadb`, but if using embeddings, you may need to add `sentence-transformers`:
-   ```
-   pip install sentence-transformers
-   ```
-
 4. Set up environment variables:
    Create a `.env` file in the root directory and add your OpenRouter API key:
    ```
