@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>AI Chatbot</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="logo">
+            AI Chat
+        </div>
+
+        <div class="model-section">
+
+            <label>Select Model</label>
+
+            <select id="model">
+
+                {% for model in models %}
+
+                    <option value="{{ model['value'] }}">
+                        {{ model['name'] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-section">
+
+        <div id="chat-box" class="chat-box"></div>
+
+        <div class="input-container">
+
+            <input
+                type="text"
+                id="message"
+                placeholder="Type your message..."
+            >
+
+            <button onclick="sendMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/js/chat.js"></script>
+
+</body>
+</html>
