@@ -18,7 +18,7 @@ This project is a simple AI chatbot that allows users to interact with various A
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/SpikerNiKS/chatbot.git
    cd chatbot
    ```
 
@@ -48,7 +48,6 @@ This project is a simple AI chatbot that allows users to interact with various A
 
 1. Ensure you have a valid OpenRouter API key.
 
-   ```
 
 ## Usage
 
