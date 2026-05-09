@@ -1,18 +1,18 @@
 # AI Chatbot
 
-A web-based AI chatbot application built with FastAPI, featuring model selection and real-time chat functionality powered by OpenRouter API.
+A web-based AI chatbot application built with FastAPI, featuring model selection, real-time chat, and MongoDB-backed chat history persistence.
 
 ## Description
 
-This project is a simple AI chatbot that allows users to interact with various AI models through a web interface. It uses FastAPI for the backend, serves a static frontend, and integrates with OpenRouter to access multiple AI models. The application also includes ChromaDB for vector storage and embeddings for potential future features like document retrieval.
+This project is a simple AI chatbot that allows users to interact with various AI models through a web interface. It uses FastAPI for the backend, serves a static frontend, and integrates with OpenRouter to access multiple AI models. Chat messages and AI responses are stored in MongoDB so previous conversations can be loaded from history.
 
 ## Features
 
 - **Model Selection**: Choose from multiple AI models including Owl Alpha, CoBuddy, and Nemotron 3 Nano Omni.
 - **Real-time Chat**: Send messages and receive responses instantly via the web interface.
+- **Persistent History**: Chat history is stored in MongoDB and loaded automatically on page load.
 - **Responsive UI**: Clean, modern interface with sidebar for model selection and chat area.
 - **API Integration**: Uses OpenRouter API for accessing AI models.
-- **Vector Database**: Includes ChromaDB setup for embeddings and document storage.
 
 ## Installation
 
@@ -34,14 +34,16 @@ This project is a simple AI chatbot that allows users to interact with various A
    ```
 
 4. Set up environment variables:
-   Create a `.env` file in the root directory and add your OpenRouter API key:
+   Create a `.env` file in the root directory and add your OpenRouter API key plus your MongoDB connection string:
    ```
    OPENROUTER_API_KEY=your_api_key_here
+   MONGODB_URL=mongodb://localhost:27017
    ```
 
 ## Setup
 
 1. Ensure you have a valid OpenRouter API key.
+2. Ensure MongoDB is running and accessible at the URL configured in `MONGODB_URL`.
 
 
 ## Usage
@@ -61,6 +63,8 @@ This project is a simple AI chatbot that allows users to interact with various A
 
 - `GET /`: Serves the main chat interface.
 - `POST /chat`: Accepts a JSON payload with `message` and `model`, returns AI response.
+- `GET /chat-history`: Returns stored chat history from MongoDB.
+- `DELETE /chat-history`: Clears chat history from MongoDB.
 
 Example request:
 ```json
@@ -79,6 +83,8 @@ chatbot/
 ├── app/
 │   ├── config.py          # Configuration and API keys
 │   ├── main.py            # FastAPI app entry point
+│   ├── db/
+│   │   └── mongodb.py     # MongoDB connection and chat history collection
 │   ├── routes/
 │   │   └── chat.py        # Chat API routes
 │   ├── schemas/
