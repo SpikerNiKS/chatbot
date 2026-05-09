@@ -40,6 +40,14 @@
 
         </div>
 
+        <div class="row">
+            <button class="clear-button" onclick="clearChatHistory()">
+                Clear History
+            </button>
+        </div>
+
+        
+
     </div>
 
     <!-- Chat Area -->
@@ -55,7 +63,7 @@
                 placeholder="Type your message..."
             >
 
-            <button onclick="sendMessage()">
+            <button id="send-btn" onclick="sendMessage()">
                 Send
             </button>
 

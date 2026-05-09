@@ -3,4 +3,5 @@ uvicorn
 python-dotenv
 httpx
 jinja2
-chromadb
+pymongo
+python-dateutil
