@@ -36,6 +36,11 @@ async function sendMessage() {
     const message = input.value.trim();
     const model = modelSelect.value;
     const modelName = modelSelect.options[modelSelect.selectedIndex].text;
+    const temperature = parseFloat(document.getElementById("temperature").value);
+
+    const top_p = parseFloat(document.getElementById("top_p").value);
+
+    const top_k = parseInt(document.getElementById("top_k").value);
 
     if (!message) return;
 
@@ -57,7 +62,10 @@ async function fetchResponse(message, model, modelName, bubble) {
             },
             body: JSON.stringify({
                 message: message,
-                model: model
+                model: model,
+                temperature: temperature,
+                top_p: top_p,
+                top_k: top_k
             })
         });
 
@@ -154,3 +162,26 @@ async function clearChatHistory() {
         alert("Failed to clear chat history. Please try again.");
     }
 }
+
+document.getElementById("temperature")
+    .addEventListener("input", function () {
+
+        document.getElementById("temperature-value")
+            .textContent = this.value;
+    });
+
+
+document.getElementById("top_p")
+    .addEventListener("input", function () {
+
+        document.getElementById("top_p-value")
+            .textContent = this.value;
+    });
+
+
+document.getElementById("top_k")
+    .addEventListener("input", function () {
+
+        document.getElementById("top_k-value")
+            .textContent = this.value;
+    });
